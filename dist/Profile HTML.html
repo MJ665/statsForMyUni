@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html leng="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            overflow-x: hidden;
+
+        }
+
+        .container {
+            background: #fff;
+            width: 740px;
+            height: 1070px;
+            margin: 0 auto;
+            position: relative;
+            margin-top: 10%;
+            box-shadow: 2px 5px 20px rgba(119, 119, 119, 0.5);
+        }
+
+        .leftbox {
+            float: left;
+            top: -5%;
+            left: 5%;
+            position: absolute;
+            width: 15%;
+            height: 110%;
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            box-shadow: 3px 3px 10px rgba(119, 119, 119, .5);
+            border: .1em solid #fff;
+        }
+
+        nav a {
+            list-style: none;
+            padding: 35px;
+            color: #fff;
+            font-size: 1.1em;
+            display: block;
+            transition: all .3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #00538a;
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        nav a:first-child {
+            margin-top: 7px;
+        }
+
+        nav a.active {
+            color: #00538a;
+        }
+
+        .rightbox {
+            width: 60%;
+            margin-left: 27%;
+            /* padding: 5px; */
+        }
+
+        .tabShow {
+            transition: all .5s ease-in;
+            width: 80%;
+            position: absolute;
+        }
+
+        h1 {
+            color: #2980b9;
+            font-size: 1.2rem;
+            margin-top: 40px;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: #777;
+            text-transform: uppercase;
+            font-size: 8px;
+            letter-spacing: 1px;
+            margin-left: 2px;
+            margin-top: 10px;
+
+        }
+
+        .input,
+        p {
+            border: 0;
+            border-bottom: 1px solid #3fb6a8;
+            width: 80%;
+            font-size: .7em;
+            padding: 7px 0;
+            color: #070707;
+            outline: none;
+
+        }
+
+        span {
+            font-size: .7em;
+            color: #777;
+
+        }
+
+        .btn {
+            text-transform: uppercase;
+            font-size: 30px;
+            border: 0;
+            color: rgb(52, 12, 183);
+            background: linear-gradient(120deg, #50b6fb, #70ad44);
+            padding: 7px 15px;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
+            cursor: pointer;
+            margin-top: 15px;
+
+        }
+
+        .tabShow {
+            transition: all 0.5s ease-in;
+            width: 80%;
+            position: absolute;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/cacf32ff12.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/jpg"
+        href="C:\Users\hp\Desktop\College\First Semester\Introduction To Web Technologies\Notepad ++ Files\Project\favicon.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" defer></script>
+    <script src="bundle.js" defer></script>
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Retrieve user data from sessionStorage
+            const userData = JSON.parse(sessionStorage.getItem("userData"));
+
+            // Update the elements with the retrieved data
+            if (userData) {
+                const createdDate = new Date(userData.createdDate.seconds * 1000); // Convert seconds to milliseconds
+
+                document.getElementById("ProfileFullName").innerText = userData.FullName;
+                document.getElementById("ProfileBirthOfDate").innerText = userData.BirthOfDate;
+                document.getElementById("ProfileGender").innerText = userData.Gender;
+                document.getElementById("ProfileAge").innerText = userData.Age;
+                document.getElementById("Profileuniversity").innerText = userData.university;
+                document.getElementById("ProfileBatch").innerText = userData.Batch;
+                document.getElementById("ProfileuserName").innerText = userData.userName;
+                document.getElementById("ProfileuserUID").innerText = userData.userUID;
+                document.getElementById("ProfilecreatedDate").innerText = createdDate.toDateString();
+                document.getElementById("ProfileAddressLine").innerText = userData.AddressLine;
+                document.getElementById("ProfileCity").innerText = userData.City;
+                document.getElementById("Profilestates").innerText = userData.states;
+                document.getElementById("ProfileCountry").innerText = userData.Country;
+                document.getElementById("ProfilePincode").innerText = userData.Pincode;
+                document.getElementById("ProfilePhoneNumber").innerText = userData.PhoneNumber;
+                document.getElementById("ProfileEmailAddress").innerText = userData.EmailAddress;
+                document.getElementById("Profilepassword").innerText = userData.password;
+                document.getElementById("Profileessay1").innerText = userData.essay1;
+                document.getElementById("Profileessay2").innerText = userData.essay2;
+                document.getElementById("Profileessay3").innerText = userData.essay3;
+                // Update other elements similarly
+
+
+
+            }
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+
+    <button class="logoutProfile btn ">logout</button>
+
+
+
+    <div class="container">
+        <div class="leftbox">
+            <nav>
+                <a onclick="tabs(0)" class="tab active">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a onclick="tabs(1)" class="tab">
+                    <i class="far fa-credit-card"></i>
+                </a>
+                <a onclick="tabs(2)" class="tab">
+                    <i class="fas fa-tv"></i>
+                </a>
+
+            </nav>
+        </div>
+        <div class="rightbox">
+            <div class="profile tabShow">
+
+
+
+                <h1>Personal Information</h1>
+                <h2>Full Name</h2>
+                <p class="input" id="ProfileFullName"></p>
+                
+                <h2>Birth Date</h2>
+                <p class="input" id="ProfileBirthOfDate"></p>
+
+                <h2>Gender</h2>
+                <p class="input" id="ProfileGender"></p>
+
+                <h2>Age</h2>
+                <p class="input" id="ProfileAge"></p>
+
+                <h2>University</h2>
+                <p class="input" id="Profileuniversity"></p>
+
+                <h2>Batch</h2>
+                <p class="input" id="ProfileBatch"></p>
+
+                <h2>User Name</h2>
+                <p class="input" id="ProfileuserName"></p>
+
+                <h2>User UID</h2>
+                <p class="input" id="ProfileuserUID"></p>
+
+                <h2>User Created Date</h2>
+                <p class="input" id="ProfilecreatedDate"></p>
+
+
+
+            </div>
+            <div class="Contact tabShow">
+
+
+
+
+                <h1>Contact Information</h1>
+                <h2>Address Line</h2>
+                <p class="input" id="ProfileAddressLine"></p>
+
+                <h2>City</h2>
+                <p class="input" id="ProfileCity"></p>
+
+                <h2>State</h2>
+                <p class="input" id="Profilestates"></p>
+
+                <h2>Country</h2>
+                <p class="input" id="ProfileCountry"></p>
+
+                <h2>Pincode</h2>
+                <p class="input" id="ProfilePincode"></p>
+
+                <h2>PhoneNumber</h2>
+                <p class="input" id="ProfilePhoneNumber"></p>
+
+                <h2>EmailAddress</h2>
+                <p class="input" id="ProfileEmailAddress"></p>
+
+                <h2>password</h2>
+                <p class="input" id="Profilepassword"></p>
+
+
+
+            </div>
+            <div class="Essay tabShow">
+                <h1>Your Esssays </h1>
+                <h2>Essay1</h2>
+                <p class="input" id="Profileessay1"></p>
+                <h2>Essay2</h2>
+                <p class="input" id="Profileessay2"></p>
+                <h2>Essay3</h2>
+                <p class="input" id="Profileessay3"></p>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>    const tabBtn = document.querySelectorAll(".tab");
+        const tab = document.querySelectorAll(".tabShow");
+
+        function tabs(panelIndex) {
+            tab.forEach(function (node) {
+                node.style.display = "none";
+            });
+            tab[panelIndex].style.display = "block";
+        }
+        tabs(0);
+        document.querySelectorAll(".tab").forEach(function (tab) {
+            tab.addEventListener("click", function () {
+                document.querySelectorAll(".tab.active").forEach(function (activeTab) {
+                    activeTab.classList.remove("active");
+                });
+                this.classList.add("active");
+            });
+        })</script>
+
+
+
+    <form class="registerNewStudent"></form>
+    <form class="signinSI"></form>
+    <form class="searchForm"></form>
+    <div style="display: none;" class="displayProfilesBox"></div>
+
+    <form class="contactMeForm"></form>
+
+
+
+
+</body>
+
+</html>
