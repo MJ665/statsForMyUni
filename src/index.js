@@ -87,7 +87,7 @@ registerNewStudentForm.addEventListener("submit", async (e) => {
 
         essay1: registerNewStudentForm.essay1.value,
         essay2: registerNewStudentForm.essay2.value,
-        essay3: registerNewStudentForm.essay3.value,
+        Portfolio: registerNewStudentForm.Portfolio.value,
         createdDate: serverTimestamp(),
       };
       await setDoc(doc(db, "studentCol", cred.user.uid), data)
